@@ -9,7 +9,7 @@ const skills = {
   lua: "Lua",
   love2d: "LOVE 2D",
   php: "PHP",
-  react: "reactJS",
+  react: "ReactJS",
   typescript: "TypeScript",
   springboot: "Spring Boot",
   html: "HTML",
@@ -31,7 +31,7 @@ const internships = [
       "Tested EmQube's in-development Facility Management Software called CAFM Pro.",
       "Suggested fixes for issues found.",
       "Developed a cross-platform mobile application using React Native. Integrated EmQube's backend and allowed users to create tickets for issues through the application.",
-      "Documented the UI for the CAFM Pro application"
+      "Documented the UI for the CAFM Pro application",
     ],
     skills: [
       skills.react_native,
@@ -49,7 +49,7 @@ const internships = [
     description: [
       "Developed a full stack application that accepts user input, updates the database using API calls.",
       "Built frontend using Angular (TypeScript) and learnt about fetch requests and observable objects.",
-      "Coded backend using Spring Boot (Java) and learnt about JPARepository, SQLite, and building my own API."
+      "Coded backend using Spring Boot (Java) and learnt about JPARepository, SQLite, and building my own API.",
     ],
     logo: "/images/triway.png",
     skills: [
@@ -69,7 +69,7 @@ const internships = [
     logo: "/images/galaxkey.webp",
     description: [
       "Learnt about Software Security.",
-      "Selected as team leader to find breaches in data protection within my high school context."
+      "Selected as team leader to find breaches in data protection within my high school context.",
     ],
     skills: [],
   },
@@ -79,7 +79,13 @@ const projects = [
   {
     name: "Eco Trek",
     type: "Mobile Application",
-    description: [],
+    short_desc:
+      "An Innovative Solution to Incentivise Keeping Our Environment Clean and Solving the Common Littering Problem",
+    long_desc: [
+      "Used machine learning and google maps api to plot a route between any 2 points that has the most amount of trash in its route",
+      "Rewards users with points based on the amount of trash picked up (this is checked by our machine learning model that analyzes trash in images and decides how dangerous it is to the environment)",
+      "Added a community feature to share routes and organise community events",
+    ],
     skills: [
       skills.ml,
       skills.flutter,
@@ -91,7 +97,13 @@ const projects = [
   {
     name: "Paws",
     type: "Web Application",
-    description: [],
+    short_desc: "The All-In-One Solution To All Your Dog's Needs",
+    long_desc: [
+      "Allowed scheduling of important tasks with email remainders for things like vaccinations, checkups, etc.",
+      "Harnessed google maps api to display the closest vetenary clinics and closest pet adoption center for users with no dogs",
+      "Used dog breed to suggest potential favourite foods along with links to buy them at the cheapest price",
+      "Created a community section for users to post questions and get answers on anything related to their dog",
+    ],
     skills: [
       skills.react,
       skills.html,
@@ -106,13 +118,21 @@ const projects = [
   {
     name: "CAFM Mobile",
     type: "Mobile Application",
-    description: [],
+    short_desc: "",
+    long_desc: [],
     skills: [skills.react_native, skills.javascript],
   },
   {
     name: "Tournament Tracker",
     type: "Web Application",
-    description: [],
+    short_desc: "Inter-School Tournament Tracker",
+    long_desc: [
+      "<strong>Inspiration: </strong>My highschool kept no record of previous years tournament winners and there was no way for participants to track their performance across tournaments to show universities.",
+      "Integrated excel sheet processing so that coaches could enter an excel sheet with all participants and teams would be created automatically using given information.",
+      "Created an algorithm that randomizes tournament matches and creates a single elimination tournament.",
+      "Used our country's ID to track player performance and create portfolios for them.",
+      "Awarded points to each team based on match outcomes and calculated winner at the end of the tournament.",
+    ],
     skills: [
       skills.react,
       skills.html,
@@ -127,13 +147,25 @@ const projects = [
   {
     name: "Elite English School Communicator Application",
     type: "Mobile Application",
-    description: [],
+    short_desc:
+      "iOS Application To Strengthen Communication Between Parents and School Staff.",
+    long_desc: [
+      "Allows parents to view outstanding fee amounts, upcoming school events, subject specific conversations and circulars.",
+      "Displayed test scores and end of year report cards.",
+      "Tracked student attendance.",
+    ],
     skills: [skills.react_native, skills.javascript, skills.php],
   },
   {
     name: "Community",
     type: "Mobile Application",
-    description: [],
+    short_desc:
+      "A Community Management Application To Book Amenities and Generate Requests to Fix Issues",
+    long_desc: [
+      "Created an application that allows users to book amenities in their community.",
+      "Coded backend so that amenities could be booked from different timezones.",
+      "Allowed users to take images of issues and send location using google maps api along with creating requests",
+    ],
     skills: [
       skills.react_native,
       skills.django,
@@ -146,29 +178,34 @@ const projects = [
   {
     name: "Railway Reservation",
     type: "Web Application",
-    description: "",
+    short_desc: "My Grade 11 Project",
+    long_desc: [
+      "<strong>Inspiration: </strong>My Computer Science teacher told me we had to improve our 10th grade projects by using only Java. She referred to using the Java GUI, but my curiosity to learn more about SpringBoot inspired me to go beyond.",
+      "Created a database using MySQL to store user information.",
+      "Harnessed Vaadin to create a frontend using only Java",
+    ],
     skills: [skills.java, skills.springboot, skills.html, skills.css],
   },
   {
     name: "Wrecking Ball",
     type: "Desktop Game",
-    description: "",
+    short_desc: "Recreation of An Old Original Game: Brick Breaker",
+    long_desc: [
+      "Harnessed Lua and LOVE2D to recreate Brick Breaker after learning game development from Harvard's Introduction to Game Development",
+    ],
     skills: [skills.lua, skills.love2d],
   },
 ];
 
 // Typewriter code
-const carouselText = [
-  "Software Developer",
-  "Innovator",
-]
+const carouselText = ["Software Developer", "Innovator"];
 
 document.addEventListener("DOMContentLoaded", () => {
   const func = async () => {
-    carousel(carouselText, "#feature-text")
-  }
+    carousel(carouselText, "#feature-text");
+  };
   func();
-})
+});
 
 async function typeSentence(sentence, eleRef, delay = 100) {
   const letters = sentence.split("");
@@ -176,7 +213,7 @@ async function typeSentence(sentence, eleRef, delay = 100) {
   while (i < letters.length) {
     await waitForMs(delay);
     document.querySelector(eleRef).append(letters[i]);
-    i++
+    i++;
   }
   return;
 }
@@ -199,11 +236,13 @@ async function carousel(carouselList, eleRef) {
     await waitForMs(1500);
     await deleteSentence(eleRef);
     await waitForMs(500);
-    i++
-    if (i >= carouselList.length) { i = 0; }
+    i++;
+    if (i >= carouselList.length) {
+      i = 0;
+    }
   }
 }
 
 function waitForMs(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

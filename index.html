@@ -65,7 +65,7 @@
                 <a class="nav-link" href="#workExperience">Work Experience</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Projects</a>
+                <a class="nav-link" href="#projects">Projects</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Achievements</a>
@@ -83,88 +83,60 @@
       </div>
     </nav>
 
-    <section></section>
     <div
       data-bs-spy="scroll"
       data-bs-target="#navbar-example2"
       data-bs-root-margin="0px 0px -40%"
       data-bs-smooth-scroll="true"
     >
-      <section class="container-fluid header bg-dark text-white">
-        <div class="row">
-          <div class="col"></div>
-
-          <div class="col m-auto">
-            <h1 class="display-1 fw-bold">Hi,</h1>
-            <h1 class="display-3 fw-bold">I am Laksh Makhija</h1>
-            <div class="typing-container">
-              <span id="feature-text"></span>
-              <span class="input-cursor"></span>
+      <section class="container-fluid p-0" style="height: 92vh">
+        <section
+          class="header d-flex bg-dark text-white justify-content-center"
+        >
+          <div class="row w-100">
+            <div class="col-4 avatar ms-auto">
+              <img
+                alt="avatar"
+                style="height: 100%"
+                src="/main/images/transparent-avatar.png"
+              />
+            </div>
+            <div class="col-4 header-text me-auto my-auto">
+              <h1 class="display-1 fw-bold">Hi,</h1>
+              <h1 class="display-3 fw-bold">I am Laksh Makhija</h1>
+              <div class="typing-container">
+                <span id="feature-text"></span>
+                <span class="input-cursor"></span>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
+        <section class="pt-2 px-2">
+          <h1 id="about">About Me</h1>
+          <p class="card-text">
+            I am a Georgia Tech Computer Science major who loves developing
+            software and building innovative solutions to real world problems.
+            My coding journey started when I first learnt Visual Basic in 2018.
+            Now, I have learnt over 5 programming languages and continue to
+            expand my knowledge within the vast field of Computer Science.
+          </p>
+        </section>
       </section>
 
-      <section></section>
-      <h1 id="about">About</h1>
-      <div class="card mb-3 mx-auto" style="max-width: 80%">
-        <div class="row g-0">
-          <div class="col-lg-3">
-            <img
-              src="/images/avatar.png"
-              class="img-fluid rounded-start"
-              alt="avatar"
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <p class="card-text">
-                <small class="text-body-secondary"
-                  >Last updated 3 mins ago</small
-                >
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
       <section>
-        <h1 id="workExperience">Work Experience</h1>
-        <div class="container-fluid">
+        <h1 class="px-2" id="workExperience">Work Experience</h1>
+        <div class="container-fluid bg-dark p-0">
           <div class="timeline" id="internships"></div>
         </div>
       </section>
 
-      <section class="d-md-flex flex-md-equal w-100 my-md-3">
+      <section>
+        <h1 class="px-2" id="projects">Projects</h1>
+
         <div
-          class="text-bg-dark pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"
-        >
-          <div class="my-3 py-3">
-            <h2 class="display-5">Another headline</h2>
-            <p class="lead">And an even wittier subheading.</p>
-          </div>
-          <div
-            class="bg-body-tertiary shadow-sm mx-auto"
-            style="width: 80%; height: 300px; border-radius: 21px 21px 0 0"
-          ></div>
-        </div>
-        <div
-          class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"
-        >
-          <div class="my-3 p-3">
-            <h2 class="display-5">Another headline</h2>
-            <p class="lead">And an even wittier subheading.</p>
-          </div>
-          <div
-            class="bg-dark shadow-sm mx-auto"
-            style="width: 80%; height: 300px; border-radius: 21px 21px 0 0"
-          ></div>
-        </div>
+          id="projectList"
+          class="row row-cols-1 row-cols-md-2 g-4 justify-content-center"
+        ></div>
       </section>
     </div>
 
@@ -185,7 +157,10 @@
             className="timeline-row text-white"
           >
             <div className="timeline-time">{internship.timespan}</div>
-            <div className="timeline-content">
+            <div
+              className="timeline-content bg-secondary"
+              style={{ "--bs-text-opacity": ".5;" }}
+            >
               <img
                 className="internship-logo"
                 src={internship.logo}
@@ -219,6 +194,35 @@
 
       ReactDOM.render(<Timeline />, document.getElementById("internships"));
       //   ReactDOM.render(<Timeline />, document.getElementById("root"));
+    </script>
+    <script type="text/babel">
+      const Projects = (props) => {
+        return projects.map((project) => (
+          <div className="col" style={{ "max-width": "45%" }}>
+            <div data-bs-theme="dark" className="card">
+              <img src="..." className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">{project.name}</h5>
+                <h6 className="leading">{project.type}</h6>
+                <p className="card-text">{project.short_desc}</p>
+                {project.long_desc.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+                <p className="leading"></p>
+              </div>
+              <div className="card-footer">
+                {project.skills.map((skill) => (
+                  <span class="badge rounded-pill m-1 text-bg-light">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ));
+      };
+
+      ReactDOM.render(<Projects />, document.getElementById("projectList"));
     </script>
   </body>
 </html>
